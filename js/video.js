@@ -2,6 +2,7 @@ var video;
 
 function getVid() {
     video = document.querySelector("#myVideo");
+    video.preload = "auto"
     document.querySelector("#volume").innerHTML = video.volume * 100 + "%";
     console.log(video)
 
@@ -31,16 +32,23 @@ function increaseSpeed() {
 }
 
 function skipAhead() {
-    video.currentTime = video.currentTime + 60
+    if (!video.ended) {
+        video.currentTime = video.currentTime + 60;
+    } else {
+        video.currentTime = 0;
+    }
+
     console.log("Current location is " + video.currentTime);
 }
 
 function mute() {
     if (video.muted) {
         video.muted = false;
+        document.querySelector('#mute').innerHTML = "Mute";
         console.log("Unmuted");
     } else {
         video.muted = true;
+        document.querySelector('#mute').innerHTML = "Unmute";
         console.log("Muted");
     }
 
