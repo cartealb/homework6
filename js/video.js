@@ -1,52 +1,65 @@
 var video;
 
-function getVid(){
-	video = document.querySelector("#myVideo"); 
+function getVid() {
+    video = document.querySelector("#myVideo");
+    document.querySelector("#volume").innerHTML = video.volume * 100 + "%";
+    console.log(video)
+
 }
 
-function playVid() { 
+function playVid() {
+    video.play();
 
-	console.log("Play Video");
-} 
+    console.log("Play Video");
+}
 
-function pauseVid() { 
+function pauseVid() {
 
-	console.log("Pause Video");
-} 
+    video.pause();
 
-function decreaseSpeed() { 
+    console.log("Pause Video");
+}
 
-  	console.log("Speed is "+ );
-} 
+function decreaseSpeed() {
+    video.playbackRate = video.playbackRate - (video.playbackRate * .20);
+    console.log("Speed is " + video.playbackRate);
+}
 
 function increaseSpeed() {
-
-	console.log("Speed is "+ );
-} 
+    video.playbackRate = video.playbackRate + (video.playbackRate * .25);
+    console.log("Speed is " + video.playbackRate);
+}
 
 function skipAhead() {
+    video.currentTime = video.currentTime + 60
+    console.log("Current location is " + video.currentTime);
+}
 
-	console.log("Current location is "+ );
-} 
+function mute() {
+    if (video.muted) {
+        video.muted = false;
+        console.log("Unmuted");
+    } else {
+        video.muted = true;
+        console.log("Muted");
+    }
 
-function mute() { 
-  	
-  		console.log("Unmuted");
-  	
-      	console.log("Muted");
+
 }
 
 function changeVolume() {
-;	console.log("Volume is ");
+    video.volume = document.querySelector("#volumeSlider").value / 100;
+    document.querySelector("#volume").innerHTML = video.volume * 100 + "%";
+    console.log("Volume is " + video.volume);
 }
-       
 
-function gray() { 
 
-	console.log("In grayscale")
+function gray() {
+    video.style = "filter: grayscale(100%)";
+    console.log("In grayscale")
 }
 
 function color() {
-
-	console.log("In color") 
+    video.style.filter = null;
+    console.log("In color")
 }
