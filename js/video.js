@@ -32,7 +32,7 @@ function increaseSpeed() {
 }
 
 function skipAhead() {
-    if (!video.ended) {
+    if (video.currentTime + 60 < video.duration) {
         video.currentTime = video.currentTime + 60;
     } else {
         video.currentTime = 0;
